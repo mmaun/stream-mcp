@@ -1,4 +1,5 @@
 from mcp.server.fastmcp import FastMCP
+import uvicorn
 
 mcp = FastMCP("server")
 
@@ -8,4 +9,5 @@ def greeting(name: str) -> str:
     return f"Hi {name}"
 
 if __name__ == "__main__":
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=8000)
+    # Use uvicorn directly to control host/port
+    uvicorn.run(mcp.app, host="0.0.0.0", port=8000)
