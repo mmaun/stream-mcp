@@ -1,5 +1,9 @@
+import os
 from mcp.server.fastmcp import FastMCP
-import uvicorn
+
+# Set environment variables before creating FastMCP
+os.environ["HOST"] = "0.0.0.0"
+os.environ["PORT"] = "8000"
 
 mcp = FastMCP("server")
 
@@ -9,5 +13,4 @@ def greeting(name: str) -> str:
     return f"Hi {name}"
 
 if __name__ == "__main__":
-    # Use uvicorn directly to control host/port
-    uvicorn.run(mcp.app, host="0.0.0.0", port=8000)
+    mcp.run(transport="streamable-http")
