@@ -1,9 +1,4 @@
-import os
 from mcp.server.fastmcp import FastMCP
-
-# Set environment variables before creating FastMCP
-os.environ["HOST"] = "0.0.0.0"
-os.environ["PORT"] = "8000"
 
 mcp = FastMCP("server")
 
